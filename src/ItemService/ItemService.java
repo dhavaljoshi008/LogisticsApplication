@@ -5,4 +5,7 @@ package ItemService;
  * LogisticsApplication
  */
 public class ItemService {
+    public static void main(String[] args) {
+
+    }
 }
