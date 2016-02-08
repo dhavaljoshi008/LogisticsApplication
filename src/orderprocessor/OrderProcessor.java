@@ -14,9 +14,10 @@ public class OrderProcessor {
     public static void main(String[] args) {
        ItemService itemService = new ItemService("XML");
        String source = "items.xml";
-       HashMap<String, Item> itemHashMap = (HashMap) itemService.loadItems(source);
-       for(String itemId: itemHashMap.keySet()) {
-           System.out.println(itemHashMap.get(itemId));
-       }
+       itemService.loadItemsFromSource(source);
+       Item item1 = itemService.getItem("CT1928");
+       System.out.println(item1);
+       Item item2 = itemService.getItem("XYZ144");
+       System.out.println(item2);
     }
 }
