@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38543ff0-7f23-4819-ad77-509e5f345f4e" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/processorder/OrderProcessor.java" afterPath="$PROJECT_DIR$/src/orderprocessor/OrderProcessor.java" />
-    </list>
+    <list default="true" id="38543ff0-7f23-4819-ad77-509e5f345f4e" name="Default" comment="" />
     <ignored path="LogisticsApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
