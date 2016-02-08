@@ -10,4 +10,7 @@
 	<Item Id="CT1928">
 		<Price>910</Price>
 	</Item>
+	<Item Id="E241i">
+		<Price>10400</Price>
+	</Item>
 </Items>

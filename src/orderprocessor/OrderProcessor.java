@@ -1,4 +1,4 @@
-package processorder;
+package orderprocessor;
 
 
 import item.Item;
@@ -7,7 +7,7 @@ import item.ItemService;
 import java.util.HashMap;
 
 /**
- * processorder.java
+ * orderprocessor.java
  * LogisticsApplication
  */
 public class OrderProcessor {
