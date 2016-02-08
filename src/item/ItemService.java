@@ -17,18 +17,24 @@ public class ItemService {
         return delegate.loadItems(source);
     }
 
+    private boolean isItemMapLoaded() {
+        return itemMap != null;
+    }
     // Publicly exposed method for loading items.
     public boolean loadItemsFromSource(String source) {
+        // Initializing itemMap
         itemMap = loadItems(source);
-        if(itemMap != null && !itemMap.isEmpty()) {
+        if(isItemMapLoaded() && !itemMap.isEmpty()) {
             System.out.println("Items loaded successfully!");
             return true;
         }
+        System.out.println("Failed to load items!");
         return false;
     }
 
+    // Check if item is available.
     public boolean isItemAvailable(String itemId) {
-        if(itemMap != null && itemMap.containsKey(itemId)) {
+        if(isItemMapLoaded() && itemMap.containsKey(itemId)) {
             System.out.println("Item_ID: " + itemId + " available!");
             return true;
         }
@@ -39,6 +45,10 @@ public class ItemService {
     // Get Item object by Item_ID
     public Item getItem(String itemId) {
         isItemAvailable(itemId);
-        return itemMap.get(itemId);
+        if(isItemMapLoaded()) {
+            return itemMap.get(itemId);
+        }
+        System.out.println("Item map not initialized!");
+        return null;
     }
 }
