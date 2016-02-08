@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class OrderProcessor {
     public static void main(String[] args) {
-       ItemService itemService = new ItemService("XML");
+       ItemService itemService = ItemService.getItemServiceInstance();
        String source = "items.xml";
        itemService.loadItemsFromSource(source);
        Item item1 = itemService.getItem("CT1928");
