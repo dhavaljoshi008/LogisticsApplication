@@ -1,7 +1,7 @@
-package FacilityService;
+package facility;
 
 /**
- * FacilityService.java
+ * facility.java
  * LogisticsApplication
  */
 public class FacilityService {
