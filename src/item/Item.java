@@ -1,4 +1,4 @@
-package ItemService;
+package item;
 
 /**
  * Item.java
@@ -8,7 +8,7 @@ public class Item {
     private String id;
     private double price;
 
-    Item(String id, double price) {
+    public Item(String id, double price) {
         this.id = id;
         this.price = price;
     }

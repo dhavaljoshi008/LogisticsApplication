@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Items>
+	<Item Id="ABC123">
+		<Price>550</Price>
+	</Item>
+	<Item Id="CR2032">
+		<Price>240</Price>
+	</Item>
+	<Item Id="CT1928">
+		<Price>910</Price>
+	</Item>
+</Items>

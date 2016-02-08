@@ -1,7 +1,7 @@
-package OrderService;
+package order;
 
 /**
- * OrderService.java
+ * order.java
  * LogisticsApplication
  */
 public class OrderService {
