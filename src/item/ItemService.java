@@ -7,11 +7,14 @@ import java.util.Map;
  * LogisticsApplication
  */
 public class ItemService {
+    private static ItemService itemServiceInstance;
     private ItemLoader delegate;
     private Map<String, Item> itemMap;
-    public ItemService(String type) {
+
+    private ItemService(String type) {
         delegate = ItemLoaderFactory.build(type);
     }
+
 
     private Map<String, Item> loadItems(String source) {
         return delegate.loadItems(source);
@@ -20,6 +23,19 @@ public class ItemService {
     private boolean isItemMapLoaded() {
         return itemMap != null;
     }
+
+    public static ItemService getItemServiceInstance() {
+        if(itemServiceInstance == null) {
+            // Initializing itemServiceInstance to source as a XML file.
+            itemServiceInstance = new ItemService("XML");
+        }
+        return itemServiceInstance;
+    }
+
+    public void changeSourceType(String type) {
+        delegate = ItemLoaderFactory.build(type);
+    }
+
     // Publicly exposed method for loading items.
     public boolean loadItemsFromSource(String source) {
         // Initializing itemMap
