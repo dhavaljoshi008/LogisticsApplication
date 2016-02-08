@@ -12,10 +12,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * ItemXmlLoadermpl.java
+ * ItemXmlLoadeImpl.java
  * LogisticsApplication
  */
-public class ItemXmlLoadermpl implements ItemLoader {
+public class ItemXmlLoadeImpl implements ItemLoader {
 
     @Override
     public Map<String, Item> loadItems(String source) {

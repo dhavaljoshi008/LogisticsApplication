@@ -9,7 +9,7 @@ public class ItemLoaderFactory {
         switch (type) {
             case "xml":
             case "XML":
-                return new ItemXmlLoadermpl();
+                return new ItemXmlLoadeImpl();
             default:
                 System.out.println("Usage for XML file:");
                 System.out.println("ItemService itemService = new ItemService(\"xml\");");
