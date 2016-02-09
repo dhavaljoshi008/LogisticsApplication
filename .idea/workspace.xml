@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38543ff0-7f23-4819-ad77-509e5f345f4e" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/item/ItemXmlLoadeImpl.java" afterPath="$PROJECT_DIR$/src/item/ItemXmlLoaderImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/item/ItemLoaderFactory.java" afterPath="$PROJECT_DIR$/src/item/ItemLoaderFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/item/ItemService.java" afterPath="$PROJECT_DIR$/src/item/ItemService.java" />
     </list>
     <ignored path="LogisticsApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemService.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ItemService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/item/ItemService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+            <state vertical-scroll-proportion="0.04918033">
+              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -129,10 +127,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemLoaderFactory.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ItemLoaderFactory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/item/ItemLoaderFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4918033">
+            <state vertical-scroll-proportion="0.0">
               <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
               <folding />
             </state>
@@ -175,8 +173,8 @@
         <option value="$PROJECT_DIR$/items.xml" />
         <option value="$PROJECT_DIR$/src/item/ItemLoaderFactory.java" />
         <option value="$PROJECT_DIR$/src/orderprocessor/OrderProcessor.java" />
-        <option value="$PROJECT_DIR$/src/item/ItemService.java" />
         <option value="$PROJECT_DIR$/src/item/ItemXmlLoaderImpl.java" />
+        <option value="$PROJECT_DIR$/src/item/ItemService.java" />
       </list>
     </option>
   </component>
@@ -1011,14 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/item/ItemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/item/ItemXmlLoaderImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1031,8 +1021,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/item/ItemLoaderFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4918033">
+        <state vertical-scroll-proportion="0.0">
           <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/item/ItemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04918033">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
           <folding />
         </state>
       </provider>
