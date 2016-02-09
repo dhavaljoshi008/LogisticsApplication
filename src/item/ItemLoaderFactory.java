@@ -9,7 +9,7 @@ public class ItemLoaderFactory {
         switch (type) {
             case "xml":
             case "XML":
-                return new ItemXmlLoadeImpl();
+                return new ItemXmlLoaderImpl();
             case "null":
             case "NULL":
                 return new ItemNullLoaderImpl();

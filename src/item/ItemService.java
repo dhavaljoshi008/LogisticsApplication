@@ -6,7 +6,7 @@ import java.util.Map;
  * item.java
  * LogisticsApplication
  */
-public class ItemService {
+final public class ItemService {
     private static ItemService itemServiceInstance;
     private ItemLoader delegate;
     private Map<String, Item> itemMap;
