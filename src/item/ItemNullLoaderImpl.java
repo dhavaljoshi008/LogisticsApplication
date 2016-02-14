@@ -10,7 +10,7 @@ import java.util.Map;
 public class ItemNullLoaderImpl implements ItemLoader {
     @Override
     public Map<String, Item> loadItems(String source) {
-        System.out.println("******** Inside ItemNullLoaderImpl loadItems() method! ********");
-        return new HashMap<String, Item>();
+        System.out.println("******** Inside ItemNullLoaderImpl loadItems(String source) method! ********");
+        return new HashMap<>();
     }
 }
