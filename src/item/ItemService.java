@@ -8,16 +8,16 @@ import java.util.Map;
  */
 final public class ItemService {
     private static ItemService itemServiceInstance;
-    private ItemLoader delegate;
+    private ItemLoader itemLoaderDelegate;
     private Map<String, Item> itemMap;
 
     private ItemService(String type) {
-        delegate = ItemLoaderFactory.build(type);
+        itemLoaderDelegate = ItemLoaderFactory.build(type);
     }
 
 
     private Map<String, Item> loadItems(String source) {
-        return delegate.loadItems(source);
+        return itemLoaderDelegate.loadItems(source);
     }
 
     private boolean isItemMapLoaded() {
@@ -32,8 +32,8 @@ final public class ItemService {
         return itemServiceInstance;
     }
 
-    public void changeSourceType(String type) {
-        delegate = ItemLoaderFactory.build(type);
+    public void changeItemLoaderSourceType(String type) {
+        itemLoaderDelegate = ItemLoaderFactory.build(type);
     }
 
     // Publicly exposed method for loading items.
@@ -49,18 +49,18 @@ final public class ItemService {
     }
 
     // Check if item is available.
-    public boolean isItemAvailable(String itemId) {
+    public boolean isValidItem(String itemId) {
         if(isItemMapLoaded() && itemMap.containsKey(itemId)) {
-            System.out.println("Item_ID: " + itemId + " available!");
+           // System.out.println("Item_ID: " + itemId + " available!");
             return true;
         }
-        System.out.println("Item_ID: " + itemId + " not available!");
+       // System.out.println("Item_ID: " + itemId + " not available!");
         return false;
     }
 
     // Get Item object by Item_ID
     public Item getItem(String itemId) {
-        isItemAvailable(itemId);
+        isValidItem(itemId);
         if(isItemMapLoaded()) {
             return itemMap.get(itemId);
         }
