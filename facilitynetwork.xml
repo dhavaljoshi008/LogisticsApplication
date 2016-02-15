@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Facilities>
+    <Facility Id="Des Moines, IA">
+        <ProcessingRate>8</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>St. Louis, MO</Id>
+            <Distance>348</Distance>
+        </Edge>
+        <Edge>
+            <Id>Denver, CO</Id>
+            <Distance>672</Distance>
+        </Edge>
+        <Edge>
+            <Id>Minneapolis, MN</Id>
+            <Distance>244</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Minneapolis, MN">
+        <ProcessingRate>12</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Fargo, ND</Id>
+            <Distance>235</Distance>
+        </Edge>
+        <Edge>
+            <Id>Chicago, IL</Id>
+            <Distance>409</Distance>
+        </Edge>
+        <Edge>
+            <Id>Seattle, WA</Id>
+            <Distance>1656</Distance>
+        </Edge>
+    </Facility>
     <Facility Id="Seattle, WA">
         <ProcessingRate>8</ProcessingRate>
         <ProcessingCost>300</ProcessingCost>
