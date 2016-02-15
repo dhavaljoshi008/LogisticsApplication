@@ -11,5 +11,4 @@ public interface Facility {
     boolean addInventoryItem(String itemId, int quantity);
     String generateFacilityStatusOutput();
     Map<String, Double> getTransportationLinksWithDistance();
-    int[] getSchedule();
 }
