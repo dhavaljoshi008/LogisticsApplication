@@ -47,7 +47,7 @@ public class OrderProcessor {
             i++;
             System.out.println(i + ". " + " " + source + " to" + " " + sourceDestination.get(source));
             System.out.println("\t" + "<> " + shortestPathService.getShortestPathBetween(source, sourceDestination.get(source)));
-            System.out.println("\t" + "<> " + shortestPathService.getShortestDistanceBetween(source, sourceDestination.get(source)) + "mi/" + "(" + drivingHoursPerDay + " * " + milesPerHour + ")" + " = " + String.format("%.2f", shortestPathService.getShortestPathDaysBetween(source, sourceDestination.get(source), drivingHoursPerDay, milesPerHour)) + " days");
+            System.out.println("\t" + "<> " + shortestPathService.getShortestDistanceBetween(source, sourceDestination.get(source)) + " mi/" + "(" + drivingHoursPerDay + " hours per day * " + milesPerHour + " mph)" + " = " + String.format("%.2f", shortestPathService.getShortestPathDaysBetween(source, sourceDestination.get(source), drivingHoursPerDay, milesPerHour)) + " days");
             System.out.println();
         }
     }
