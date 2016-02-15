@@ -2,6 +2,8 @@ package facility;
 
 
 import facility.inventory.Inventory;
+import facility.schedule.Schedule;
+import facility.schedule.ScheduleService;
 import utilities.ShortestPathService;
 
 import java.util.*;
@@ -18,6 +20,7 @@ public class FacilityBasicImpl implements Facility {
     // Connected facility and Distance
     private Map<String, Double> transportationLinksWithDistance;
     private Map<String, Double> transportationLinksWithDays;
+    private Schedule schedule;
 
     FacilityBasicImpl(String facilityId, int processingCapacityPerDay, double dailyProcessingCost, Map<String, Integer> inventory, Map<String, Double> transportationLinks) {
         this.facilityId = facilityId;
@@ -26,6 +29,10 @@ public class FacilityBasicImpl implements Facility {
         this.inventory = new Inventory(inventory);
         this.transportationLinksWithDistance =  sortByValues((HashMap) transportationLinks);
         transportationLinksWithDays = new HashMap<>();
+        this.schedule = ScheduleService.getScheduleServiceInstance();
+        int numberOfDays = 20;
+        schedule.setNumberOfDays(numberOfDays);
+        schedule.setProcessingCapacityPerDay(processingCapacityPerDay);
 
     }
 
