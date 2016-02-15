@@ -18,6 +18,7 @@ public class FacilityBasicImpl implements Facility {
     // Connected facility and Distance
     private Map<String, Double> transportationLinksWithDistance;
     private Map<String, Double> transportationLinksWithDays;
+    private int[] schedule;
 
     FacilityBasicImpl(String facilityId, int processingCapacityPerDay, double dailyProcessingCost, Map<String, Integer> inventory, Map<String, Double> transportationLinks) {
         this.facilityId = facilityId;
@@ -26,7 +27,13 @@ public class FacilityBasicImpl implements Facility {
         this.inventory = new Inventory(inventory);
         this.transportationLinksWithDistance =  sortByValues((HashMap) transportationLinks);
         transportationLinksWithDays = new HashMap<>();
+        schedule = new int[20];
+        for (int i=0; i< schedule.length; i++)
+            schedule[i] = processingCapacityPerDay;
+    }
 
+    public int[] getSchedule(){
+        return schedule;
     }
 
     private static HashMap sortByValues(HashMap map) {
@@ -101,7 +108,13 @@ public class FacilityBasicImpl implements Facility {
         facilityStatusOutput.append(this.inventory.generateInventoryStatusOutput());
         facilityStatusOutput.append("Depleted (Used-up) Inventory: ");
         facilityStatusOutput.append("\n");
-        facilityStatusOutput.append("Schedule: ");
+        facilityStatusOutput.append("Schedule: \n");
+        facilityStatusOutput.append("Day       ");
+        for (i=0; i<schedule.length; i++)
+            facilityStatusOutput.append(String.format("%2d", i+1) + " ");
+        facilityStatusOutput.append("\nAvailable ");
+        for (i=0; i<schedule.length; i++)
+            facilityStatusOutput.append(String.format("%2d", schedule[i]) + " ");
         facilityStatusOutput.append("\n");
         return facilityStatusOutput.toString();
     }
