@@ -3,7 +3,7 @@ package facility;
 
 import facility.inventory.Inventory;
 import facility.schedule.Schedule;
-import facility.schedule.ScheduleService;
+import facility.schedule.ScheduleFactory;
 import utilities.ShortestPathService;
 
 import java.util.*;
@@ -29,11 +29,16 @@ public class FacilityBasicImpl implements Facility {
         this.inventory = new Inventory(inventory);
         this.transportationLinksWithDistance =  sortByValues((HashMap) transportationLinks);
         transportationLinksWithDays = new HashMap<>();
-        this.schedule = ScheduleService.getScheduleServiceInstance();
+        this.schedule = ScheduleFactory.build("basic");
         int numberOfDays = 20;
-        schedule.setNumberOfDays(numberOfDays);
-        System.out.println("Facility_ID: "+ this.facilityId + " " + "Processing capacity" + this.processingCapacityPerDay);
-        schedule.setProcessingCapacityPerDay(this.processingCapacityPerDay);
+        boolean setNumDaysStatus = schedule.setNumberOfDays(numberOfDays);
+        if(!setNumDaysStatus) {
+            System.out.println("Please enter number of days for Facility_ID: " + this.facilityId + " within the range 1 to 30!");
+        }
+        boolean setProcCapStatus = schedule.setProcessingCapacityPerDay(this.processingCapacityPerDay);
+        if(!setProcCapStatus){
+            System.out.println("Please enter processing capacity for Facility_ID: " + this.facilityId + " within the range 1 to 25!");
+        }
 
     }
 
