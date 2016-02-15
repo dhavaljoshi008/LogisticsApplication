@@ -49,12 +49,12 @@ public class ScheduleBasicImpl implements Schedule {
         int scheduleLength = schedule.length;
         scheduleBuilder.append("Day:       ");
         for(int i = 0; i < scheduleLength; i++) {
-            scheduleBuilder.append(i + 1 + " ");
+            scheduleBuilder.append(String.format("%2d",i + 1) + " ");
         }
         scheduleBuilder.append("\n");
         scheduleBuilder.append("Available: ");
         for(int i = 0; i < scheduleLength; i++) {
-            scheduleBuilder.append(schedule[i] + " ");
+            scheduleBuilder.append(String.format("%2d", schedule[i]) + " ");
         }
         scheduleBuilder.append("\n");
         return scheduleBuilder.toString();
