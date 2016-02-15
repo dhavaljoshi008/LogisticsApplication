@@ -1,13 +1,15 @@
 package facility.schedule;
 
+
+
 /**
  * ScheduleBasicImpl.java
  * LogisticsApplication
  */
 public class ScheduleBasicImpl implements Schedule {
     boolean[] bookedScheduleStatus;
-    private int processingCapacityPerDay;
     private int[] schedule;
+    int processingCapacityPerDay;
 
     @Override
     public boolean setNumberOfDays(int days) {
@@ -16,7 +18,8 @@ public class ScheduleBasicImpl implements Schedule {
             bookedScheduleStatus = new boolean[days];
             return true;
         } else {
-            System.out.println("Please enter number of days within the range 1 to 30");
+            schedule = new int[0];
+            bookedScheduleStatus = new boolean[0];
         }
         return false;
     }
@@ -30,7 +33,6 @@ public class ScheduleBasicImpl implements Schedule {
                 schedule[i] = this.processingCapacityPerDay;
             return true;
         } else {
-            System.out.println("Please enter a number within 1 to 25");
             return false;
         }
     }
