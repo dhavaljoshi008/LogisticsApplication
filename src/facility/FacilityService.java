@@ -1,8 +1,14 @@
 package facility;
 
 import facility.inventory.InventoryService;
+import utilities.Edge;
+import utilities.Graph;
+import utilities.ShortestPathService;
+import utilities.Vertex;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,6 +20,8 @@ final public class FacilityService {
     private FacilityNetworkLoader facilityNetworkLoaderDelegate;
     private Map<String, Facility> facilityMap;
     private Map<String, Map<String, Integer>> inventoryMap;
+    private Graph facilityNetworkGraph;
+    private Map<String, Vertex> facilityVertexMap;
 
     private FacilityService(String type) {
         facilityNetworkLoaderDelegate = FacilityNetworkLoaderFactory.build(type);
@@ -23,18 +31,80 @@ final public class FacilityService {
         return facilityNetworkLoaderDelegate.loadFacilityNetwork(source);
     }
 
-    private boolean isFacilityMapLoaded() {
-        return facilityMap != null;
-    }
-    private boolean isInventoryMapLoaded() { return  inventoryMap != null;}
-
-    public static FacilityService getFacitlityServiceInstance() {
+    public static FacilityService getFacilityServiceInstance() {
         if(facilityServiceInstance == null) {
             // Initializing facilityServiceInstance to source as a XML file.
             facilityServiceInstance = new FacilityService("XML");
         }
         return facilityServiceInstance;
     }
+
+
+    private boolean isFacilityMapLoaded() {
+        return facilityMap != null;
+    }
+
+    private boolean isInventoryMapLoaded() { return  inventoryMap != null;}
+
+    // Check if FacilityNetworkGraph has been generated.
+    private boolean isFacilityNetworkGraphInitialized() {
+        return facilityNetworkGraph != null;
+    }
+
+    private Facility getFacilityById(String facilityId) {
+        if(doesFacilityExists(facilityId)) {
+            return facilityMap.get(facilityId);
+        }
+        else {
+            System.out.println("Facility_ID: " + facilityId + " does not exists!");
+        }
+        return null;
+    }
+
+    private void generateFacilityNetworkGraph(Map<String, Facility> facilityMap) {
+        List<Vertex> facilityVertexList = new ArrayList<>();
+        List<Edge> facilityEdgeList = new ArrayList<>();
+        Map<String, Vertex> vertexMap = new HashMap<>();
+        int vertexId = 0;
+        int edgeId = 0;
+        for(String facility: facilityMap.keySet()) {
+            vertexId++;
+            Vertex v = new Vertex("" + vertexId, facility);
+            facilityVertexList.add(v);
+            vertexMap.put(facility, v);
+        }
+        for(String facilityVertex: vertexMap.keySet()) {
+            Map<String, Double> transportationLinks = getFacilityById(facilityVertex).getTransportationLinksWithDistance();
+            for(String facilityLink: transportationLinks.keySet()) {
+                edgeId++;
+                Edge v1V2 = new Edge("" + edgeId, vertexMap.get(facilityVertex), vertexMap.get(facilityLink), transportationLinks.get(facilityLink));
+                Edge v2V1 = new Edge("" + edgeId, vertexMap.get(facilityLink), vertexMap.get(facilityVertex),  transportationLinks.get(facilityLink));
+                facilityEdgeList.add(v1V2);
+                facilityEdgeList.add(v2V1);
+            }
+        }
+        facilityNetworkGraph = new Graph(facilityVertexList, facilityEdgeList);
+        ShortestPathService.getShortestPathServiceInstance().initNodesAndEdgesFromGraph(facilityNetworkGraph);
+
+    }
+
+    // Populating inventories.
+    private void populateInventoryForAllFacilities() {
+        String facId;
+        for(String facilityId: inventoryMap.keySet()) {
+            facId = facilityId;
+            if (doesFacilityExists(facilityId)) {
+                HashMap<String, Integer> inventoryItems = (HashMap) inventoryMap.get(facilityId);
+                for (String item : inventoryItems.keySet()) {
+                    // Adding inventory item and quantity.
+                    facilityMap.get(facilityId).addInventoryItem(item, inventoryItems.get(item));
+                }
+            } else {
+                System.out.println("Unknown Facility_ID: " + facId + "!" + " Cannot load inventory!");
+            }
+        }
+    }
+
 
     public void changeFacilityLoaderSourceType(String type) {
         facilityNetworkLoaderDelegate = FacilityNetworkLoaderFactory.build(type);
@@ -58,6 +128,8 @@ final public class FacilityService {
         facilityMap = loadFacilityNetwork(source);
         if(isFacilityMapLoaded() && !facilityMap.isEmpty()) {
             System.out.println("FacilityNetwork loaded successfully!");
+            // Generating FacilityNetworkGraph.
+            generateFacilityNetworkGraph(facilityMap);
             return true;
         }
         System.out.println("Failed to load facilitynetwork!");
@@ -67,7 +139,7 @@ final public class FacilityService {
 
     public boolean loadInventoryFromSource(String source) {
         inventoryMap = InventoryService.getInventoryServiceInstance().loadInventoryFromSource(source);
-        if(isFacilityMapLoaded() && !inventoryMap.isEmpty()) {
+        if(isInventoryMapLoaded() && !inventoryMap.isEmpty()) {
             System.out.println("Inventories loaded successfully!");
             populateInventoryForAllFacilities();
             return true;
@@ -82,24 +154,6 @@ final public class FacilityService {
         InventoryService.getInventoryServiceInstance().changeInventoryLoaderSourceType(source);
     }
 
-    // Populating inventories.
-    private void populateInventoryForAllFacilities() {
-        String facId;
-        for(String facilityId: inventoryMap.keySet()) {
-            facId = facilityId;
-            if (doesFacilityExists(facilityId)) {
-                HashMap<String, Integer> inventoryItems = (HashMap) inventoryMap.get(facilityId);
-                for (String item : inventoryItems.keySet()) {
-                    // Adding inventory item and quantity.
-                    facilityMap.get(facilityId).addInventoryItem(item, inventoryItems.get(item));
-                }
-            } else {
-                System.out.println("Unknown Facility_ID: " + facId + "!" + " Cannot load inventory!");
-            }
-        }
-    }
-
-
     // Printing status of all the facilities.
     public void generateFacilityStatusOutputForAllFacilities() {
         int i = 0;
@@ -108,5 +162,15 @@ final public class FacilityService {
             System.out.println(i + ". " + facilityMap.get(facility).generateFacilityStatusOutput());
 
         }
+    }
+
+    public Graph getFacilityNetworkGraph() {
+        if(isFacilityNetworkGraphInitialized()) {
+            return facilityNetworkGraph;
+        }
+        else {
+            System.out.println("FacilityNetworkGraph not initialized!");
+        }
+        return null;
     }
 }

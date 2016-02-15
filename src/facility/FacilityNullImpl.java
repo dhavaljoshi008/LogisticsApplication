@@ -1,5 +1,8 @@
 package facility;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * FacilityNullImpl.java
  * LogisticsApplication
@@ -12,6 +15,12 @@ public class FacilityNullImpl implements Facility {
 
     @Override
     public String generateFacilityStatusOutput() {
-        return null;
+        return "";
     }
+
+    @Override
+    public Map<String, Double> getTransportationLinksWithDistance() {
+        return new HashMap<>();
+    }
+
 }
