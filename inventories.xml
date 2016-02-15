@@ -289,4 +289,48 @@
             <Quantity>88</Quantity>
         </Item>
     </Facility>
+    <Facility Id="Des Moines, IA">
+        <Item>
+            <ItemId>E241i</ItemId>
+            <Quantity>20</Quantity>
+        </Item>
+        <Item>
+            <ItemId>JBL3100</ItemId>
+            <Quantity>44</Quantity>
+        </Item>
+        <Item>
+            <ItemId>SR71-D</ItemId>
+            <Quantity>15</Quantity>
+        </Item>
+        <Item>
+            <ItemId>CR2032</ItemId>
+            <Quantity>30</Quantity>
+        </Item>
+        <Item>
+            <ItemId>XTP202</ItemId>
+            <Quantity>88</Quantity>
+        </Item>
+    </Facility>
+    <Facility Id="Minneapolis, MN">
+        <Item>
+            <ItemId>PU238</ItemId>
+            <Quantity>72</Quantity>
+        </Item>
+        <Item>
+            <ItemId>ZTF109</ItemId>
+            <Quantity>44</Quantity>
+        </Item>
+        <Item>
+            <ItemId>SR71-D</ItemId>
+            <Quantity>15</Quantity>
+        </Item>
+        <Item>
+            <ItemId>SN-241-L</ItemId>
+            <Quantity>28</Quantity>
+        </Item>
+        <Item>
+            <ItemId>RL123A</ItemId>
+            <Quantity>18</Quantity>
+        </Item>
+    </Facility>
 </Inventories>

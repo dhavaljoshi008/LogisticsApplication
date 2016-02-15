@@ -109,7 +109,7 @@ public class FacilityBasicImpl implements Facility {
         facilityStatusOutput.append("\n");
         facilityStatusOutput.append("Active Inventory: ");
         facilityStatusOutput.append("\n");
-        facilityStatusOutput.append("Item_ID" + "\t\t" + "Quantity");
+        facilityStatusOutput.append(String.format("%10s","Item_ID") + "\t\t" + "Quantity");
         facilityStatusOutput.append("\n");
         facilityStatusOutput.append(this.inventory.generateInventoryStatusOutput());
         facilityStatusOutput.append("Depleted (Used-up) Inventory: ");
