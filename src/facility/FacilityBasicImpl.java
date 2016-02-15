@@ -32,7 +32,8 @@ public class FacilityBasicImpl implements Facility {
         this.schedule = ScheduleService.getScheduleServiceInstance();
         int numberOfDays = 20;
         schedule.setNumberOfDays(numberOfDays);
-        schedule.setProcessingCapacityPerDay(processingCapacityPerDay);
+        System.out.println("Facility_ID: "+ this.facilityId + " " + "Processing capacity" + this.processingCapacityPerDay);
+        schedule.setProcessingCapacityPerDay(this.processingCapacityPerDay);
 
     }
 
@@ -109,6 +110,8 @@ public class FacilityBasicImpl implements Facility {
         facilityStatusOutput.append("Depleted (Used-up) Inventory: ");
         facilityStatusOutput.append("\n");
         facilityStatusOutput.append("Schedule: ");
+        facilityStatusOutput.append("\n");
+        facilityStatusOutput.append(schedule.getSchedule());
         facilityStatusOutput.append("\n");
         return facilityStatusOutput.toString();
     }
