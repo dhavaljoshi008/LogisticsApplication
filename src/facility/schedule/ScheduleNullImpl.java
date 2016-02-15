@@ -32,11 +32,11 @@ public class ScheduleNullImpl implements Schedule {
 
     @Override
     public int getScheduleForDay(int day) {
-        return 0;
+        return -1;
     }
 
     @Override
     public int getFirstOpenDay() {
-        return 0;
+        return -1;
     }
 }
