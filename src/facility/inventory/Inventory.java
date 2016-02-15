@@ -39,7 +39,7 @@ public class Inventory {
     public String generateInventoryStatusOutput() {
         StringBuilder inventoryStatusOutput = new StringBuilder();
         for(String item: inventory.keySet()) {
-            inventoryStatusOutput.append(item + "\t\t" + inventory.get(item) + "\n");
+            inventoryStatusOutput.append(String.format("%10s",item) + "\t\t" + inventory.get(item) + "\n");
         }
         return inventoryStatusOutput.toString();
     }
