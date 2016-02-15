@@ -23,6 +23,4 @@ public class FacilityNullImpl implements Facility {
         return new HashMap<>();
     }
 
-    @Override
-    public int[] getSchedule() {return new int[20];}
 }
