@@ -1,6 +1,6 @@
 package facility;
 
-import facility.inventory.InventoryService;
+import facility.inventory.InventoryLoaderService;
 import utilities.Edge;
 import utilities.Graph;
 import utilities.ShortestPathService;
@@ -138,7 +138,7 @@ final public class FacilityService {
     }
 
     public boolean loadInventoryFromSource(String source) {
-        inventoryMap = InventoryService.getInventoryServiceInstance().loadInventoryFromSource(source);
+        inventoryMap = InventoryLoaderService.getInventoryLoaderServiceInstance().loadInventoryFromSource(source);
         if(isInventoryMapLoaded() && !inventoryMap.isEmpty()) {
             System.out.println("Inventories loaded successfully!");
             populateInventoryForAllFacilities();
@@ -151,7 +151,7 @@ final public class FacilityService {
     }
 
     public void changeInventoryLoaderSourceType(String source) {
-        InventoryService.getInventoryServiceInstance().changeInventoryLoaderSourceType(source);
+        InventoryLoaderService.getInventoryLoaderServiceInstance().changeInventoryLoaderSourceType(source);
     }
 
     // Printing status of all the facilities.
