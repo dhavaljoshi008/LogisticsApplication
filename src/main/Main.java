@@ -13,7 +13,8 @@ public class Main {
     public static void main(String[] args) {
         OrderProcessor orderProcessor = OrderProcessor.getOrderProcessorInstance();
         orderProcessor.loadItemsFromSource("items.xml");
-        orderProcessor.loadFacilityNetworkFromSource("facilitynetwork.xml");
+        orderProcessor.loadFacilityNetworkFromSource("facilityNetwork.xml");
+        orderProcessor.loadInventoryFromSource("inventories.xml");
         orderProcessor.generateFacilityStatusOutputForAllFacilities();
         Map<String, String> sourceDestination = new HashMap<>();
         sourceDestination.put("Santa Fe, NM", "Chicago, IL");
