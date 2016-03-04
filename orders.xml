@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Orders>
+    <Order Id="TO-001">
+        <Time>1</Time>
+        <Destination>Miami, FL</Destination>
+        <Item>
+            <Id>ABC123</Id>
+            <Quantity>180</Quantity>
+        </Item>
+        <Item>
+            <Id>CR2032</Id>
+            <Quantity>320</Quantity>
+        </Item>
+    </Order>
+    <Order Id="TO-002">
+        <Time>1</Time>
+        <Destination>Boston, MA</Destination>
+        <Item>
+            <Id>PL132-C</Id>
+            <Quantity>5</Quantity>
+        </Item>
+        <Item>
+            <Id>XLK200B</Id>
+            <Quantity>120</Quantity>
+        </Item>
+    </Order>
+</Orders>

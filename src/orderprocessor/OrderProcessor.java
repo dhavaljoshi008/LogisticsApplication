@@ -3,6 +3,7 @@ package orderprocessor;
 
 import facility.FacilityService;
 import item.ItemService;
+import order.OrderService;
 import utilities.ShortestPathService;
 
 import java.util.HashMap;
@@ -51,4 +52,8 @@ final public class OrderProcessor {
        System.out.println();
 
    }
+   public boolean loadOrdersFromSource(String source) {
+      return OrderService.getOrderServiceInstance().loadOrdersFromSource(source);
+   }
+
 }

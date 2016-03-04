@@ -47,7 +47,7 @@ public class InventoryXmlLoaderImpl implements InventoryLoader {
                     return null;
                 }
 
-                // Fetching the facility
+                // Fetch the facility
                 NamedNodeMap aMap = inventoryEntries.item(i).getAttributes();
                 String facilityId = aMap.getNamedItem("Id").getNodeValue();
 
@@ -68,7 +68,7 @@ public class InventoryXmlLoaderImpl implements InventoryLoader {
                         return null;
                     }
 
-                    // Fetching connected facility and its distance
+                    // Fetch the item id and quantity.
                     elem = (Element) itemList.item(j);
                     String itemId = elem.getElementsByTagName("ItemId").item(0).getTextContent();
                     String itemQuantity = elem.getElementsByTagName("Quantity").item(0).getTextContent();
@@ -79,7 +79,7 @@ public class InventoryXmlLoaderImpl implements InventoryLoader {
                 }
 
                 // System.out.println("Facility_ID: " + facilityId + "ItemID and Quantity: ["+itemIdQuantity+"]");
-                // Populating facilityInventoryMap
+                // Populate facilityInventoryMap
                 facilityInventoryMap.put(facilityId, itemIdQuantity);
 
             }

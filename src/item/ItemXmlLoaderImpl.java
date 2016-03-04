@@ -19,7 +19,7 @@ public class ItemXmlLoaderImpl implements ItemLoader {
 
     @Override
     public Map<String, Item> loadItems(String source) {
-        Map<String, Item> items = new HashMap<>();
+        Map<String, Item> itemMap = new HashMap<>();
         try {
                 String fileName = source;
 
@@ -48,16 +48,16 @@ public class ItemXmlLoaderImpl implements ItemLoader {
                         return null;
                     }
 
-                    // Fetching Item_ID
+                    // Fetch item id.
                     NamedNodeMap aMap = itemEntries.item(i).getAttributes();
                     String itemId = aMap.getNamedItem("Id").getNodeValue();
 
-                    // Fetching Item_Price
+                    // Fetch item price.
                     Element elem = (Element) itemEntries.item(i);
                     String itemPrice = elem.getElementsByTagName("Price").item(0).getTextContent();
 
-                    // Populating items Map
-                    items.put(itemId, new Item(itemId, Double.parseDouble(itemPrice)));
+                    // Populate item map.
+                    itemMap.put(itemId, new Item(itemId, Double.parseDouble(itemPrice)));
                    // System.out.println("Item_ID: " + itemId + " Item_Price: " + itemPrice + "\n");
 
             }
@@ -66,6 +66,6 @@ public class ItemXmlLoaderImpl implements ItemLoader {
         catch (ParserConfigurationException | SAXException | IOException | DOMException e) {
             e.printStackTrace();
         }
-        return items;
+        return itemMap;
     }
 }
