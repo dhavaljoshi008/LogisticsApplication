@@ -19,7 +19,7 @@ import java.util.Map;
 public class FacilityNetworkXmlLoaderImpl implements FacilityNetworkLoader {
     @Override
     public Map<String, Facility> loadFacilityNetwork(String source) {
-        Map<String, Facility> facilitiesMap = new HashMap<>();
+        Map<String, Facility> facilityMap = new HashMap<>();
         try {
                 String fileName = source;
 
@@ -48,11 +48,11 @@ public class FacilityNetworkXmlLoaderImpl implements FacilityNetworkLoader {
                     return null;
                 }
 
-                // Fetching the facility
+                // Fetch the facility
                 NamedNodeMap aMap = facilityEntries.item(i).getAttributes();
                 String facilityId = aMap.getNamedItem("Id").getNodeValue();
 
-                // Fetching Processing Rate and Cost of the facility
+                // Fetch Processing Rate and Cost of the facility
                 Element elem = (Element) facilityEntries.item(i);
                 String processingRate = elem.getElementsByTagName("ProcessingRate").item(0).getTextContent();
                 String processingCost = elem.getElementsByTagName("ProcessingCost").item(0).getTextContent();
@@ -73,7 +73,7 @@ public class FacilityNetworkXmlLoaderImpl implements FacilityNetworkLoader {
                         return null;
                     }
 
-                    // Fetching connected facility and its distance
+                    // Fetch connected facility and its distance
                     elem = (Element) edgeList.item(j);
                     String edgeId = elem.getElementsByTagName("Id").item(0).getTextContent();
                     String edgeDistance = elem.getElementsByTagName("Distance").item(0).getTextContent();
@@ -84,15 +84,15 @@ public class FacilityNetworkXmlLoaderImpl implements FacilityNetworkLoader {
                 }
 
                // System.out.println("Facility_ID: " + facilityId + " ProcessingCapacityPerDay: " + processingRate + " ProcessingCost: $"+ processingCost + " DirectLinks: ["+edgeIdDistance+"]");
-                // Populating facilitiesMap
-                facilitiesMap.put(facilityId, FacilityFactory.build("basic", facilityId, Integer.parseInt(processingRate), Double.parseDouble(processingCost), new HashMap<String, Integer>(), edgeIdDistance));
+                // Populate facilityMap
+                facilityMap.put(facilityId, FacilityFactory.build("basic", facilityId, Integer.parseInt(processingRate), Double.parseDouble(processingCost), new HashMap<String, Integer>(), edgeIdDistance));
 
             }
 
         } catch (ParserConfigurationException | SAXException | IOException | DOMException e) {
             e.printStackTrace();
         }
-        return facilitiesMap;
+        return facilityMap;
     }
 
 }

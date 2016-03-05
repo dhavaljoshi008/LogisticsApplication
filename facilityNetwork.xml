@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Facilities>
+    <Facility Id="Seattle, WA">
+        <ProcessingRate>8</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Fargo, ND</Id>
+            <Distance>1426</Distance>
+        </Edge>
+        <Edge>
+            <Id>San Francisco, CA</Id>
+            <Distance>808</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="San Francisco, CA">
+        <ProcessingRate>12</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Seattle, WA</Id>
+            <Distance>808</Distance>
+        </Edge>
+        <Edge>
+            <Id>Denver, CO</Id>
+            <Distance>1249</Distance>
+        </Edge>
+        <Edge>
+            <Id>Los Angeles, CA</Id>
+            <Distance>382</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Los Angeles, CA">
+        <ProcessingRate>10</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>San Francisco, CA</Id>
+            <Distance>382</Distance>
+        </Edge>
+        <Edge>
+            <Id>Phoenix, AZ</Id>
+            <Distance>372</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Phoenix, AZ">
+        <ProcessingRate>8</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Los Angeles, CA</Id>
+            <Distance>372</Distance>
+        </Edge>
+        <Edge>
+            <Id>Santa Fe, NM</Id>
+            <Distance>480</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Denver, CO">
+        <ProcessingRate>10</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>San Francisco, CA</Id>
+            <Distance>1249</Distance>
+        </Edge>
+        <Edge>
+            <Id>Santa Fe, NM</Id>
+            <Distance>392</Distance>
+        </Edge>
+        <Edge>
+            <Id>Fargo, ND</Id>
+            <Distance>889</Distance>
+        </Edge>
+        <Edge>
+            <Id>St. Louis, MO</Id>
+            <Distance>851</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Santa Fe, NM">
+        <ProcessingRate>8</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Phoenix, AZ</Id>
+            <Distance>480</Distance>
+        </Edge>
+        <Edge>
+            <Id>Denver, CO</Id>
+            <Distance>392</Distance>
+        </Edge>
+        <Edge>
+            <Id>St. Louis, MO</Id>
+            <Distance>1032</Distance>
+        </Edge>
+        <Edge>
+            <Id>Austin, TX</Id>
+            <Distance>688</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Fargo, ND">
+        <ProcessingRate>8</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Seattle, WA</Id>
+            <Distance>1426</Distance>
+        </Edge>
+        <Edge>
+            <Id>Denver, CO</Id>
+            <Distance>889</Distance>
+        </Edge>
+        <Edge>
+            <Id>Chicago, IL</Id>
+            <Distance>643</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Austin, TX">
+        <ProcessingRate>10</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Santa Fe, NM</Id>
+            <Distance>688</Distance>
+        </Edge>
+        <Edge>
+            <Id>St. Louis, MO</Id>
+            <Distance>825</Distance>
+        </Edge>
+        <Edge>
+            <Id>New Orleans, LA</Id>
+            <Distance>512</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="St. Louis, MO">
+        <ProcessingRate>12</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Chicago, IL</Id>
+            <Distance>297</Distance>
+        </Edge>
+        <Edge>
+            <Id>Nashville, TN</Id>
+            <Distance>309</Distance>
+        </Edge>
+        <Edge>
+            <Id>Austin, TX</Id>
+            <Distance>825</Distance>
+        </Edge>
+        <Edge>
+            <Id>Santa Fe, NM</Id>
+            <Distance>1032</Distance>
+        </Edge>
+        <Edge>
+            <Id>Denver, CO</Id>
+            <Distance>851</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Chicago, IL">
+        <ProcessingRate>10</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Fargo, ND</Id>
+            <Distance>643</Distance>
+        </Edge>
+        <Edge>
+            <Id>St. Louis, MO</Id>
+            <Distance>297</Distance>
+        </Edge>
+        <Edge>
+            <Id>New York City, NY</Id>
+            <Distance>790</Distance>
+        </Edge>
+        <Edge>
+            <Id>Detroit, MI</Id>
+            <Distance>282</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="New Orleans, LA">
+        <ProcessingRate>10</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Austin, TX</Id>
+            <Distance>512</Distance>
+        </Edge>
+        <Edge>
+            <Id>Nashville, TN</Id>
+            <Distance>532</Distance>
+        </Edge>
+        <Edge>
+            <Id>Atlanta, GA</Id>
+            <Distance>469</Distance>
+        </Edge>
+        <Edge>
+            <Id>Miami, FL</Id>
+            <Distance>864</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Nashville, TN">
+        <ProcessingRate>8</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>St. Louis, MO</Id>
+            <Distance>309</Distance>
+        </Edge>
+        <Edge>
+            <Id>New Orleans, LA</Id>
+            <Distance>532</Distance>
+        </Edge>
+        <Edge>
+            <Id>Norfolk, VA</Id>
+            <Distance>706</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Detroit, MI">
+        <ProcessingRate>10</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Chicago, IL</Id>
+            <Distance>282</Distance>
+        </Edge>
+        <Edge>
+            <Id>New York City, NY</Id>
+            <Distance>614</Distance>
+        </Edge>
+        <Edge>
+            <Id>Boston, MA</Id>
+            <Distance>719</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Boston, MA">
+        <ProcessingRate>10</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Detroit, MI</Id>
+            <Distance>719</Distance>
+        </Edge>
+        <Edge>
+            <Id>New York City, NY</Id>
+            <Distance>215</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="New York City, NY">
+        <ProcessingRate>14</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Boston, MA</Id>
+            <Distance>215</Distance>
+        </Edge>
+        <Edge>
+            <Id>Detroit, MI</Id>
+            <Distance>614</Distance>
+        </Edge>
+        <Edge>
+            <Id>Chicago, IL</Id>
+            <Distance>790</Distance>
+        </Edge>
+        <Edge>
+            <Id>Norfolk, VA</Id>
+            <Distance>363</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Norfolk, VA">
+        <ProcessingRate>10</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>New York City, NY</Id>
+            <Distance>363</Distance>
+        </Edge>
+        <Edge>
+            <Id>Nashville, TN</Id>
+            <Distance>706</Distance>
+        </Edge>
+        <Edge>
+            <Id>Atlanta, GA</Id>
+            <Distance>566</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Atlanta, GA">
+        <ProcessingRate>10</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Norfolk, VA</Id>
+            <Distance>566</Distance>
+        </Edge>
+        <Edge>
+            <Id>New Orleans, LA</Id>
+            <Distance>469</Distance>
+        </Edge>
+        <Edge>
+            <Id>Miami, FL</Id>
+            <Distance>663</Distance>
+        </Edge>
+    </Facility>
+    <Facility Id="Miami, FL">
+        <ProcessingRate>12</ProcessingRate>
+        <ProcessingCost>300</ProcessingCost>
+        <Edge>
+            <Id>Atlanta, GA</Id>
+            <Distance>663</Distance>
+        </Edge>
+        <Edge>
+            <Id>New Orleans, LA</Id>
+            <Distance>864</Distance>
+        </Edge>
+    </Facility>
+</Facilities>

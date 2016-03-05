@@ -3,6 +3,7 @@ package orderprocessor;
 
 import facility.FacilityService;
 import item.ItemService;
+import order.OrderService;
 import utilities.ShortestPathService;
 
 import java.util.HashMap;
@@ -31,12 +32,11 @@ final public class OrderProcessor {
     }
 
     public boolean loadFacilityNetworkFromSource(String facilityNetworkSource) {
-        FacilityService facilityService = FacilityService.getFacilityServiceInstance();
-        String facilitySource = "facilitynetwork.xml";
-        String inventorySource = "inventories.xml";
-        boolean loadFacilityNetworkStatus = facilityService.loadFacilityNetworkFromSource(facilitySource);
-        facilityService.loadInventoryFromSource(inventorySource);
-        return  loadFacilityNetworkStatus;
+        return  FacilityService.getFacilityServiceInstance().loadFacilityNetworkFromSource(facilityNetworkSource);
+    }
+
+    public boolean loadInventoryFromSource(String inventorySource) {
+        return FacilityService.getFacilityServiceInstance().loadInventoryFromSource(inventorySource);
     }
 
    public void generateFacilityStatusOutputForAllFacilities() {
@@ -52,4 +52,8 @@ final public class OrderProcessor {
        System.out.println();
 
    }
+   public boolean loadOrdersFromSource(String source) {
+      return OrderService.getOrderServiceInstance().loadOrdersFromSource(source);
+   }
+
 }
