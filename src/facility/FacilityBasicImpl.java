@@ -1,6 +1,7 @@
 package facility;
 
 
+import exceptions.InvalidArgumentException;
 import facility.inventory.Inventory;
 import facility.schedule.Schedule;
 import facility.schedule.ScheduleFactory;
@@ -22,14 +23,27 @@ public class FacilityBasicImpl implements Facility {
     private Map<String, Double> transportationLinksWithDays;
     private Schedule schedule;
 
-    FacilityBasicImpl(String facilityId, int processingCapacityPerDay, double dailyProcessingCost, Map<String, Integer> inventory, Map<String, Double> transportationLinks) {
-        this.facilityId = facilityId;
-        this.processingCapacityPerDay = processingCapacityPerDay;
-        this.dailyProcessingCost = dailyProcessingCost;
-        this.inventory = new Inventory(inventory);
-        this.transportationLinksWithDistance =  sortByValues((HashMap) transportationLinks);
+    FacilityBasicImpl(String facilityId, int processingCapacityPerDay, double dailyProcessingCost, Map<String, Integer> inventory, Map<String, Double> transportationLinks) throws InvalidArgumentException {
+//        this.facilityId = facilityId;
+//        this.processingCapacityPerDay = processingCapacityPerDay;
+//        this.dailyProcessingCost = dailyProcessingCost;
+//        this.inventory = new Inventory(inventory);
+//        this.transportationLinksWithDistance =  sortByValues((HashMap) transportationLinks);
+//        transportationLinksWithDays = new HashMap<>();
+
+        //this.facilityId = facilityId;
+        setFacilityId(facilityId);
+        //this.processingCapacityPerDay = processingCapacityPerDay;
+        setProcessingCapacityPerDay(processingCapacityPerDay);
+        //this.dailyProcessingCost = dailyProcessingCost;
+        setDailyProcessingCost(dailyProcessingCost);
+        //this.inventory = new Inventory(inventory);
+        setInventory(inventory);
+        //this.transportationLinksWithDistance =  sortByValues((HashMap) transportationLinks);
+        setTransportationLinksWithDistance(transportationLinks);
         transportationLinksWithDays = new HashMap<>();
-        this.schedule = ScheduleFactory.build("basic");
+        //this.schedule = ScheduleFactory.build("basic");
+        setSchedule("basic");
         int numberOfDays = 20;
         boolean setNumDaysStatus = schedule.setNumberOfDays(numberOfDays);
         if(!setNumDaysStatus) {
@@ -40,6 +54,49 @@ public class FacilityBasicImpl implements Facility {
             System.out.println("Please enter processing capacity for Facility_ID: " + this.facilityId + " within the range 1 to 25!");
         }
 
+    }
+
+    private void setFacilityId(String facId) throws InvalidArgumentException {
+        if(facId == null && facId.isEmpty()) {
+            throw new InvalidArgumentException("Facility " + facId + " is null or empty");
+        }
+        this.facilityId = facId;
+    }
+
+    private void setProcessingCapacityPerDay(int procCapPerDay) throws InvalidArgumentException {
+        if(procCapPerDay < 0 || procCapPerDay > 25){
+            throw new InvalidArgumentException("Invalid Processing Capacity Per Day: " + procCapPerDay + " for facility " + facilityId);
+        }
+        this.processingCapacityPerDay = procCapPerDay;
+    }
+
+    private void setDailyProcessingCost(double dailyProcCost) throws InvalidArgumentException {
+        if(dailyProcCost < 0.0){
+            throw new InvalidArgumentException("Invalid Processing Cost Per Day: " + dailyProcCost + " for facility " + facilityId);
+        }
+        this.dailyProcessingCost = dailyProcCost;
+    }
+
+    private void setInventory(Map invent) throws InvalidArgumentException {
+        if(invent == null) {
+            throw new InvalidArgumentException("Null passed to 'setInventory(Map)'");
+        }
+        this.inventory = new Inventory(invent);
+    }
+
+    private void setTransportationLinksWithDistance(Map transportLinksWithDistance) throws InvalidArgumentException {
+        if(transportLinksWithDistance == null) {
+            throw new InvalidArgumentException("Null passed to 'setTransportationLinksWithDistance(Map)'");
+        }
+        this.transportationLinksWithDistance = sortByValues((HashMap) transportLinksWithDistance);
+    }
+
+    private void setSchedule(String type) throws InvalidArgumentException {
+        if(type == "basic" || type == "null" || type == "NULL") {
+            this.schedule = ScheduleFactory.build(type);
+        } else {
+            throw new InvalidArgumentException("Incorrect type passed to 'setSchedule(String)'");
+        }
     }
 
     private static HashMap sortByValues(HashMap map) {

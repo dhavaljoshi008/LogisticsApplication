@@ -1,6 +1,7 @@
 package order;
 
 
+import exceptions.InvalidArgumentException;
 import facility.Facility;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -19,7 +20,7 @@ import java.util.Map;
  */
 public class OrderXmlLoaderImpl implements OrderLoader {
     @Override
-    public Map<String, Order> loadOrders(String source) {
+    public Map<String, Order> loadOrders(String source) throws InvalidArgumentException {
         Map<String, Order> orderMap = new HashMap<>();
         try {
             String fileName = source;

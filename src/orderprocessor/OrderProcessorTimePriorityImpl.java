@@ -192,7 +192,7 @@ public class OrderProcessorTimePriorityImpl implements OrderProcessor {
         OrderItemLogisticsRecord orderItemLogisticsRecord = orderItemLogisticsRecordMap.get(itemId);
         StringBuilder orderItemProcessingSolutionBuilder = new StringBuilder();
         orderItemProcessingSolutionBuilder.append("\n");
-        orderItemProcessingSolutionBuilder.append(String.format("%10s",itemId)  + String.format("%10s", orderItemLogisticsRecord.getTotalProcessedQuantity())  + String.format("%10s", "$"+orderItemLogisticsRecord.getOrderItemCost()) + String.format("%15s", orderItemLogisticsRecord.getNumberOfSources()) + String.format("%10s", orderItemLogisticsRecord.getFirstDayOfDeliveryForThisItem()) + String.format("%10s", orderItemLogisticsRecord.getLastDayOfDeliveryForThisItem()));
+        orderItemProcessingSolutionBuilder.append(String.format("%10s",itemId)  + String.format("%10s", orderItemLogisticsRecord.getTotalProcessedQuantity())  + String.format("%15s", "$"+orderItemLogisticsRecord.getOrderItemCost()) + String.format("%15s", orderItemLogisticsRecord.getNumberOfSources()) + String.format("%10s", orderItemLogisticsRecord.getFirstDayOfDeliveryForThisItem()) + String.format("%10s", orderItemLogisticsRecord.getLastDayOfDeliveryForThisItem()));
         int backOrderQuantity = orderItemLogisticsRecord.getBackOrderQuantity();
         if(backOrderQuantity > 0) {
             orderItemProcessingSolutionBuilder.append(" *Back-Ordered Quantity:  " + backOrderQuantity);
@@ -238,7 +238,7 @@ public class OrderProcessorTimePriorityImpl implements OrderProcessor {
         processingSolutionBuilder.append("\n");
         processingSolutionBuilder.append("Order Items:");
         processingSolutionBuilder.append("\n");
-        processingSolutionBuilder.append(String.format("%10s","Item ID") + String.format("%10s","Quantity") + String.format("%10s","Cost") + String.format("%15s","Num. Sources") + String.format("%10s","First Day") + String.format("%10s","Last Day"));
+        processingSolutionBuilder.append(String.format("%10s","Item ID") + String.format("%10s","Quantity") + String.format("%15s","Cost") + String.format("%15s","Num. Sources") + String.format("%10s","First Day") + String.format("%10s","Last Day"));
         processingSolutionBuilder.append("\n");
         for(String itemId: orderItems) {
             processingSolutionBuilder.append(getOrderItemProcessingSolution(itemId));

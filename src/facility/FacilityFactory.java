@@ -1,5 +1,7 @@
 package facility;
 
+import exceptions.InvalidArgumentException;
+
 import java.util.Map;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Map;
  * LogisticsApplication
  */
 public class FacilityFactory {
-    public static Facility build(String type, String facilityId, int processingCapacityPerDay, double dailyProcessingCost, Map<String, Integer> inventory, Map<String, Double> transportationLinks) {
+    public static Facility build(String type, String facilityId, int processingCapacityPerDay, double dailyProcessingCost, Map<String, Integer> inventory, Map<String, Double> transportationLinks) throws InvalidArgumentException {
         switch(type) {
             case "basic":
                 return new FacilityBasicImpl(facilityId, processingCapacityPerDay, dailyProcessingCost, inventory, transportationLinks);

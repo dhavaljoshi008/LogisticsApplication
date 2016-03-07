@@ -1,5 +1,6 @@
 package order;
 
+import exceptions.InvalidArgumentException;
 import orderprocessor.OrderComparator;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ final public class OrderService {
         return  orderServiceInstance;
     }
 
-    private Map<String, Order> loadOrders(String source) {
+    private Map<String, Order> loadOrders(String source) throws InvalidArgumentException {
         return orderLoaderDelegate.loadOrders(source);
     }
 
@@ -39,7 +40,7 @@ final public class OrderService {
         orderLoaderDelegate = OrderLoaderFactory.build(type);
     }
 
-    public boolean loadOrdersFromSource(String source) {
+    public boolean loadOrdersFromSource(String source) throws InvalidArgumentException {
         orderMap = loadOrders(source);
         if(isOrderMapLoaded() && !orderMap.isEmpty()) {
             System.out.println("Orders loaded successfully!");

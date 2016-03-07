@@ -1,6 +1,7 @@
 package orderprocessor;
 
 
+import exceptions.InvalidArgumentException;
 import facility.FacilityService;
 import item.ItemService;
 import order.OrderService;
@@ -37,11 +38,11 @@ final public class OrderProcessingService {
         return ItemService.getItemServiceInstance().loadItemsFromSource(itemSource);
     }
 
-    public boolean loadFacilityNetworkFromSource(String facilityNetworkSource) {
+    public boolean loadFacilityNetworkFromSource(String facilityNetworkSource) throws InvalidArgumentException {
         return  FacilityService.getFacilityServiceInstance().loadFacilityNetworkFromSource(facilityNetworkSource);
     }
 
-    public boolean loadInventoryFromSource(String inventorySource) {
+    public boolean loadInventoryFromSource(String inventorySource) throws InvalidArgumentException {
         return FacilityService.getFacilityServiceInstance().loadInventoryFromSource(inventorySource);
     }
 
@@ -58,7 +59,7 @@ final public class OrderProcessingService {
        System.out.println();
 
    }
-   public boolean loadOrdersFromSource(String source) {
+   public boolean loadOrdersFromSource(String source) throws InvalidArgumentException {
       OrderService orderService = OrderService.getOrderServiceInstance();
       boolean result = orderService.loadOrdersFromSource(source);
       orderList = orderService.getOrderListSortedByTime();
