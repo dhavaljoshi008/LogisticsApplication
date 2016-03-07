@@ -1,10 +1,11 @@
 package main;
 
+import facility.FacilityService;
 import order.OrderService;
-import orderprocessor.OrderProcessor;
+import orderprocessor.OrderProcessingService;
+import orderprocessor.OrderProcessorTimePriorityImpl;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 /**
  * Main.java
@@ -12,11 +13,11 @@ import java.util.Map;
  */
 public class Main {
     public static void main(String[] args) {
-        OrderProcessor orderProcessor = OrderProcessor.getOrderProcessorInstance();
-        orderProcessor.loadItemsFromSource("items.xml");
-        orderProcessor.loadFacilityNetworkFromSource("facilityNetwork.xml");
-        orderProcessor.loadInventoryFromSource("inventories.xml");
-//        orderProcessor.generateFacilityStatusOutputForAllFacilities();
+        OrderProcessingService orderProcessingService = OrderProcessingService.getOrderProcessingServiceInstance();
+        orderProcessingService.loadItemsFromSource("items.xml");
+        orderProcessingService.loadFacilityNetworkFromSource("facilityNetwork.xml");
+        orderProcessingService.loadInventoryFromSource("inventories.xml");
+        orderProcessingService.generateFacilityStatusOutputForAllFacilities();
 //        Map<String, String> sourceDestination = new HashMap<>();
 //        sourceDestination.put("Santa Fe, NM", "Chicago, IL");
 //        sourceDestination.put("Atlanta, GA", "St. Louis, MO");
@@ -34,12 +35,30 @@ public class Main {
 //        for (String source : sourceDestination.keySet()) {
 //            i++;
 //            System.out.print(i + ".");
-//            orderProcessor.printShortestPathBetween(source, sourceDestination.get(source), drivingHoursPerDay, milesPerHour);
+//            orderProcessingService.printShortestPathBetween(source, sourceDestination.get(source), drivingHoursPerDay, milesPerHour);
 //        }
 
-        orderProcessor.loadOrdersFromSource("orders.xml");
+        orderProcessingService.loadOrdersFromSource("orders.xml");
         // Check
-        System.out.println(OrderService.getOrderServiceInstance());
+       // System.out.println(OrderService.getOrderServiceInstance());
+
+//        System.out.println(OrderService.getOrderServiceInstance().getOrderById("TO-002"));
+//        System.out.println(OrderService.getOrderServiceInstance().getOrderList());
+//       ArrayList<String> fList = (ArrayList) FacilityService.getFacilityServiceInstance().getFacilityList();
+//        for(String facilityId: fList) {
+//            if(FacilityService.getFacilityServiceInstance().getFacilityById(facilityId).isItemAvailable("ABC123")) {
+//                System.out.println(facilityId + " has item" );
+//            }
+//        }
+
+        orderProcessingService.processAllOrders();
+
+        orderProcessingService.printAllProcessingSolutions();
+
+        orderProcessingService.generateFacilityStatusOutputForAllFacilities();
+
+
+
 
 
     }
