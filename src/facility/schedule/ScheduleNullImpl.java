@@ -16,7 +16,7 @@ public class ScheduleNullImpl implements Schedule {
     }
 
     @Override
-    public boolean bookSchedule(int day, int numberOfItemsToProcess) {
+    public boolean bookSchedule(int orderSubmissionDay, int processQuantity) {
         return false;
     }
 
@@ -39,4 +39,10 @@ public class ScheduleNullImpl implements Schedule {
     public int getFirstOpenDay() {
         return -1;
     }
+
+    @Override
+    public int getProcessingEndDay(int orderSubmissionDay, int processQuantity) {
+        return -1;
+    }
+
 }

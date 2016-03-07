@@ -2,7 +2,9 @@ package order;
 
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -41,4 +43,34 @@ public class OrderBasicImpl implements Order {
     }
 
 
+    @Override
+    public String getOrderId() {
+        return orderId;
+    }
+
+    @Override
+    public Map<String, Integer> getOrderItems() {
+        // Return a copy of orderItems.
+        return new HashMap<>(orderItems);
+    }
+
+
+    @Override
+    public String getOrderDestination() {
+        return destination;
+    }
+
+    @Override
+    public int getOrderTime() {
+        return orderTime;
+    }
+
+    @Override
+    public List<String> getOrderItemList() {
+        List<String> orderItemList = new ArrayList<>();
+        for(String orderItemId: orderItems.keySet()) {
+            orderItemList.add(orderItemId);
+        }
+        return orderItemList;
+    }
 }
