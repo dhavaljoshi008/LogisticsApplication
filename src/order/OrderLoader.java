@@ -1,5 +1,7 @@
 package order;
 
+import exceptions.InvalidArgumentException;
+
 import java.util.Map;
 
 /**
@@ -7,5 +9,5 @@ import java.util.Map;
  * LogisticsApplication
  */
 public interface OrderLoader {
-    Map<String, Order> loadOrders(String source);
+    Map<String, Order> loadOrders(String source) throws InvalidArgumentException;
 }

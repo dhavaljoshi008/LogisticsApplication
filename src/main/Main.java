@@ -1,5 +1,6 @@
 package main;
 
+import exceptions.InvalidArgumentException;
 import facility.FacilityService;
 import order.OrderService;
 import orderprocessor.OrderProcessingService;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * LogisticsApplication
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidArgumentException {
         OrderProcessingService orderProcessingService = OrderProcessingService.getOrderProcessingServiceInstance();
         orderProcessingService.loadItemsFromSource("items.xml");
         orderProcessingService.loadFacilityNetworkFromSource("facilityNetwork.xml");

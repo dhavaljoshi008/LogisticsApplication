@@ -1,5 +1,7 @@
 package facility;
 
+import exceptions.InvalidArgumentException;
+
 import java.util.Map;
 
 /**
@@ -8,5 +10,5 @@ import java.util.Map;
  */
 public interface FacilityNetworkLoader {
     // Loads facility and its transportation links.
-    Map<String, Facility> loadFacilityNetwork(String source);
+    Map<String, Facility> loadFacilityNetwork(String source) throws InvalidArgumentException;
 }

@@ -1,5 +1,6 @@
 package facility;
 
+import exceptions.InvalidArgumentException;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 public class FacilityNetworkXmlLoaderImpl implements FacilityNetworkLoader {
     @Override
-    public Map<String, Facility> loadFacilityNetwork(String source) {
+    public Map<String, Facility> loadFacilityNetwork(String source) throws InvalidArgumentException {
         Map<String, Facility> facilityMap = new HashMap<>();
         try {
                 String fileName = source;
