@@ -17,7 +17,9 @@ public class Main {
         orderProcessingService.loadItemsFromSource("items.xml");
         orderProcessingService.loadFacilityNetworkFromSource("facilityNetwork.xml");
         orderProcessingService.loadInventoryFromSource("inventories.xml");
+        orderProcessingService.loadOrdersFromSource("orders.xml");
         orderProcessingService.generateFacilityStatusOutputForAllFacilities();
+
 //        Map<String, String> sourceDestination = new HashMap<>();
 //        sourceDestination.put("Santa Fe, NM", "Chicago, IL");
 //        sourceDestination.put("Atlanta, GA", "St. Louis, MO");
@@ -38,7 +40,6 @@ public class Main {
 //            orderProcessingService.printShortestPathBetween(source, sourceDestination.get(source), drivingHoursPerDay, milesPerHour);
 //        }
 
-        orderProcessingService.loadOrdersFromSource("orders.xml");
         // Check
        // System.out.println(OrderService.getOrderServiceInstance());
 
