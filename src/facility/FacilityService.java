@@ -1,5 +1,6 @@
 package facility;
 
+import exceptions.InvalidArgumentException;
 import facility.inventory.InventoryLoaderService;
 import utilities.Edge;
 import utilities.Graph;
@@ -27,7 +28,7 @@ final public class FacilityService {
         facilityNetworkLoaderDelegate = FacilityNetworkLoaderFactory.build(type);
     }
 
-    private Map<String, Facility> loadFacilityNetwork(String source) {
+    private Map<String, Facility> loadFacilityNetwork(String source) throws InvalidArgumentException {
         return facilityNetworkLoaderDelegate.loadFacilityNetwork(source);
     }
 
@@ -89,18 +90,17 @@ final public class FacilityService {
     }
 
     // Populating inventories.
-    private void populateInventoryForAllFacilities() {
+    private void populateInventoryForAllFacilities() throws InvalidArgumentException {
         String facId;
         for(String facilityId: inventoryMap.keySet()) {
             facId = facilityId;
-            if (doesFacilityExists(facilityId)) {
-                HashMap<String, Integer> inventoryItems = (HashMap) inventoryMap.get(facilityId);
-                for (String item : inventoryItems.keySet()) {
-                    // Adding inventory item and quantity.
-                    facilityMap.get(facilityId).addInventoryItem(item, inventoryItems.get(item));
-                }
-            } else {
-                System.out.println("Unknown Facility_ID: " + facId + "!" + " Cannot load inventory!");
+            if (!doesFacilityExists(facilityId)){
+                throw new InvalidArgumentException("Unknown Facility_ID: " + facilityId + "!" + " Cannot load inventory!");
+            }
+            HashMap<String, Integer> inventoryItems = (HashMap) inventoryMap.get(facilityId);
+            for (String item : inventoryItems.keySet()) {
+                // Adding inventory item and quantity.
+                facilityMap.get(facilityId).addInventoryItem(item, inventoryItems.get(item));
             }
         }
     }
@@ -124,7 +124,7 @@ final public class FacilityService {
     }
 
     // Publicly exposed method for loading facilitynetwork.
-    public boolean loadFacilityNetworkFromSource(String source) {
+    public boolean loadFacilityNetworkFromSource(String source) throws InvalidArgumentException {
         facilityMap = loadFacilityNetwork(source);
         if(isFacilityMapLoaded() && !facilityMap.isEmpty()) {
             System.out.println("FacilityNetwork loaded successfully!");
@@ -137,7 +137,7 @@ final public class FacilityService {
 
     }
 
-    public boolean loadInventoryFromSource(String source) {
+    public boolean loadInventoryFromSource(String source) throws InvalidArgumentException {
         inventoryMap = InventoryLoaderService.getInventoryLoaderServiceInstance().loadInventoryFromSource(source);
         if(isInventoryMapLoaded() && !inventoryMap.isEmpty()) {
             System.out.println("Inventories loaded successfully!");
