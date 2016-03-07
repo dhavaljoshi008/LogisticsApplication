@@ -84,6 +84,50 @@ public class FacilityBasicImpl implements Facility {
     }
 
     @Override
+    public boolean isItemAvailable(String itemId) {
+        return inventory.isItemAvailable(itemId);
+    }
+
+    @Override
+    public int getAvailableQuantity(String itemId) {
+        return inventory.getAvailableQuantity(itemId);
+    }
+
+    @Override
+    public int getFirstOpenDay() {
+       return schedule.getFirstOpenDay();
+    }
+
+    @Override
+    public int getProcessingRate() {
+        return processingCapacityPerDay;
+    }
+
+    @Override
+    public int getScheduleForDay(int day) {
+        return schedule.getScheduleForDay(day);
+    }
+
+    @Override
+    public int processItem(int orderSubmissionDay, String itemId, int requiredQuantity) {
+        int processedQuantity = inventory.processItem(itemId, requiredQuantity);
+        schedule.bookSchedule(orderSubmissionDay, processedQuantity);
+        return processedQuantity;
+    }
+
+    @Override
+    public int getProcessingEndDay(int orderSubmissionDay, String itemId, int requiredQuantity) {
+       int processableQuantity = inventory.getProcessableQuantity(itemId, requiredQuantity);
+       return schedule.getProcessingEndDay(orderSubmissionDay,processableQuantity);
+    }
+
+    @Override
+    public double getFacilityProcessingCost(int itemQuantity) {
+        double totalProcessingDaysRequired = itemQuantity/(double) processingCapacityPerDay;
+        return dailyProcessingCost * totalProcessingDaysRequired;
+    }
+
+    @Override
     public String generateFacilityStatusOutput() {
         double drivingHoursPerDay = 8;
         double milesPerHour = 50;
@@ -112,7 +156,7 @@ public class FacilityBasicImpl implements Facility {
         facilityStatusOutput.append(String.format("%10s","Item_ID") + "\t\t" + "Quantity");
         facilityStatusOutput.append("\n");
         facilityStatusOutput.append(this.inventory.generateInventoryStatusOutput());
-        facilityStatusOutput.append("Depleted (Used-up) Inventory: ");
+       // facilityStatusOutput.append("Depleted (Used-up) Inventory: ");
         facilityStatusOutput.append("\n");
         facilityStatusOutput.append("Schedule: ");
         facilityStatusOutput.append("\n");

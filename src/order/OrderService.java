@@ -1,5 +1,10 @@
 package order;
 
+import orderprocessor.OrderComparator;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -42,6 +47,34 @@ final public class OrderService {
         }
         System.out.println("Failed to load orders!");
         return false;
+    }
+
+    public List<String> getOrderList() {
+        List<String> orderList = new ArrayList<>();
+        for(String orderId: orderMap.keySet()) {
+            orderList.add(orderId);
+        }
+        return orderList;
+    }
+
+    public List<String> getOrderListSortedByTime() {
+        List<Order> orderObjList = new ArrayList<>();
+        List<String> orderList = new ArrayList<>();
+        for(String orderId: orderMap.keySet()) {
+            orderObjList.add(orderMap.get(orderId));
+        }
+        Collections.sort(orderObjList, new OrderComparator());
+        for(Order order: orderObjList) {
+            orderList.add(order.getOrderId());
+        }
+        return orderList;
+     }
+
+    public Order getOrderById(String orderId) {
+        if(isOrderMapLoaded() && orderMap.containsKey(orderId)) {
+            return orderMap.get(orderId);
+        }
+        return null;
     }
 
     public String toString() {

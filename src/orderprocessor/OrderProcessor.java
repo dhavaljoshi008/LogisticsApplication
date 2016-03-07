@@ -1,59 +1,10 @@
 package orderprocessor;
 
-
-import facility.FacilityService;
-import item.ItemService;
-import order.OrderService;
-import utilities.ShortestPathService;
-
-import java.util.HashMap;
-import java.util.Map;
-
-
 /**
- * orderprocessor.java
+ * OrderProcessor.java
  * LogisticsApplication
  */
-final public class OrderProcessor {
-    private static OrderProcessor orderProcessorInstance;
-
-    private OrderProcessor() {
-
-    }
-    public static OrderProcessor getOrderProcessorInstance() {
-        if(orderProcessorInstance == null) {
-            orderProcessorInstance = new OrderProcessor();
-        }
-        return orderProcessorInstance;
-    }
-
-    public boolean loadItemsFromSource(String itemSource) {
-        return ItemService.getItemServiceInstance().loadItemsFromSource(itemSource);
-    }
-
-    public boolean loadFacilityNetworkFromSource(String facilityNetworkSource) {
-        return  FacilityService.getFacilityServiceInstance().loadFacilityNetworkFromSource(facilityNetworkSource);
-    }
-
-    public boolean loadInventoryFromSource(String inventorySource) {
-        return FacilityService.getFacilityServiceInstance().loadInventoryFromSource(inventorySource);
-    }
-
-   public void generateFacilityStatusOutputForAllFacilities() {
-       System.out.println();
-       FacilityService.getFacilityServiceInstance().generateFacilityStatusOutputForAllFacilities();
-   }
-
-   public void printShortestPathBetween(String source, String destination, double drivingHoursPerDay, double milesPerHour ) {
-       ShortestPathService shortestPathService = ShortestPathService.getShortestPathServiceInstance();
-       System.out.println(source + " to" + " " + destination);
-       System.out.println("\t" + "<> " + shortestPathService.getShortestPathBetween(source, destination));
-       System.out.println("\t" + "<> " + shortestPathService.getShortestDistanceBetween(source, destination) + "mi/" + "(" + drivingHoursPerDay + " * " + milesPerHour + ")" + " = " + String.format("%.2f", shortestPathService.getShortestPathDaysBetween(source, destination, drivingHoursPerDay, milesPerHour)) + " days");
-       System.out.println();
-
-   }
-   public boolean loadOrdersFromSource(String source) {
-      return OrderService.getOrderServiceInstance().loadOrdersFromSource(source);
-   }
-
+public interface OrderProcessor {
+    void processOrder(String orderId);
+    public String getProcessingSolutionForOrder(String orderId);
 }

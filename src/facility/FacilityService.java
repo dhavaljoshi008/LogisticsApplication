@@ -51,7 +51,7 @@ final public class FacilityService {
         return facilityNetworkGraph != null;
     }
 
-    private Facility getFacilityById(String facilityId) {
+    public Facility getFacilityById(String facilityId) {
         if(doesFacilityExists(facilityId)) {
             return facilityMap.get(facilityId);
         }
@@ -172,5 +172,23 @@ final public class FacilityService {
             System.out.println("FacilityNetworkGraph not initialized!");
         }
         return null;
+    }
+
+    public List<String> getFacilityList() {
+        List<String> faciltyList = new ArrayList<>();
+        for(String facilityId: facilityMap.keySet()) {
+            faciltyList.add(facilityId);
+        }
+        return faciltyList;
+    }
+
+    public List<String> getListOfFacilitiesWithItem(String itemId) {
+        List<String> faciltyList = new ArrayList<>();
+        for(String facilityId: facilityMap.keySet()) {
+            if(facilityMap.get(facilityId).isItemAvailable(itemId)) {
+                faciltyList.add(facilityId);
+            }
+        }
+        return faciltyList;
     }
 }
